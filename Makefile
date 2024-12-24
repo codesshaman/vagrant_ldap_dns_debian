@@ -42,7 +42,7 @@ build:
 
 connect:
 	@printf "$(OK_COLOR)==== Connecting to virtual machine ${name}... ====$(NO_COLOR)\n"
-	@ssh vagrant@192.168.56.11
+	@ssh vagrant@192.168.56.56
 
 env:
 	@printf "$(ERROR_COLOR)==== Create environment file for ${name}... ====$(NO_COLOR)\n"
@@ -50,10 +50,6 @@ env:
 		rm .env; \
     fi; \
 	cp .env.example .env
-
-connect:
-	@printf "$(OK_COLOR)==== Connecting to virtual machine ${name}... ====$(NO_COLOR)\n"
-	@ssh vagrant@192.168.56.11
 
 down:
 	@printf "$(ERROR_COLOR)==== Stopping configuration ${name}... ====$(NO_COLOR)\n"
