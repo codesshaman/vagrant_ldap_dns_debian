@@ -2,29 +2,31 @@
 
 Your need install vagrant and virtualbox for up this configuration.
 
+
 Your need install [vagrant](https://github.com/hashicorp/vagrant-installers/releases/tag/v2.3.4.dev%2Bmain "vagrant") and  [virtualbox](https://www.virtualbox.org/ "virtualbox") for up this configuration. Optional you can use [make](https://www.gnu.org/software/make/ "make").
 
 ### Step 1
 
-Download box bento/ubuntu-22.04 for virtualbox from [vagrantup](https://app.vagrantup.com/bento/boxes/ubuntu-22.04 "vagrantup").
+Download box bento/debian-12 for virtualbox from [vagrantup](https://portal.cloud.hashicorp.com/vagrant/discover/bento/debian-12.6 "vagrantup").
+
 
 ### Step 2
 
-Clonr this repository: git clone https://github.com/codesshaman/vagrant_greenplum_ubuntu.git
+Clonr this repository: git clone https://github.com/codesshaman/vagrant_ldap_dns_debian.git
 
 ### Step 3
 
 Copy box and go inside the repository folder:
 
-``cp ~/Downloads/fcd7e50d-f8f2-4156-8349-dbe7cc378101 path_to/vagrant_greenplum/ubuntu``
+``cp ~/Downloads/625c2333-fe09-46c6-88cd-e4d2e84e1795 path_to/vagrant_ldap_dns_debian/debian``
 
-``cd vagrant_greenplum``
+``cd vagrant_ldap_dns_debian``
 
 ### Step 4
 
 Inicialize configuration:
 
-``vagrant box add bento/ubuntu-22.04 ubuntu``
+``vagrant box add bento/debian-12.6 debian``
 
 or with make:
 
