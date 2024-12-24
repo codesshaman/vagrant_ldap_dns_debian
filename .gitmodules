@@ -1,0 +1,3 @@
+[submodule "ldapserver"]
+	path = ldapserver
+	url = github-repo:/codesshaman/dns_ldap_linux.git
