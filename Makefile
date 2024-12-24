@@ -1,4 +1,4 @@
-name = Ubuntu 22.04 + greenplum
+name = debian dns + ldap server
 
 NO_COLOR=\033[0m		# Color Reset
 COLOR_OFF='\e[0m'       # Color Off
@@ -14,6 +14,8 @@ CYAN='\e[1;36m'         # Cyan
 WHITE='\e[1;37m'        # White
 UCYAN='\e[4;36m'        # Cyan
 
+# git clone github-repo:codesshaman/vagrant_ldap_dns_debian.git
+
 all:
 	@printf "Launch configuration ${name}...\n"
 	@vagrant up --provider=virtualbox
@@ -28,6 +30,7 @@ help:
 	@echo -e "$(WARN_COLOR)- make ps			: View configuration"
 	@echo -e "$(WARN_COLOR)- make path			: Change path to vagrantboxes"
 	@echo -e "$(WARN_COLOR)- make push			: Push changes to repository"
+	@echo -e "$(WARN_COLOR)- make update			: Pull changes from ldap repo"
 	@echo -e "$(WARN_COLOR)- make user			: Set git user"
 	@echo -e "$(WARN_COLOR)- make re			: Restart configuration"
 	@echo -e "$(WARN_COLOR)- make clean			: Destroy configuration"
@@ -48,29 +51,9 @@ env:
     fi; \
 	cp .env.example .env
 
-con11:
+connect:
 	@printf "$(OK_COLOR)==== Connecting to virtual machine ${name}... ====$(NO_COLOR)\n"
 	@ssh vagrant@192.168.56.11
-
-con12:
-	@printf "$(OK_COLOR)==== Connecting to virtual machine ${name}... ====$(NO_COLOR)\n"
-	@ssh vagrant@192.168.56.12
-
-con13:
-	@printf "$(OK_COLOR)==== Connecting to virtual machine ${name}... ====$(NO_COLOR)\n"
-	@ssh vagrant@192.168.56.13
-
-con14:
-	@printf "$(OK_COLOR)==== Connecting to virtual machine ${name}... ====$(NO_COLOR)\n"
-	@ssh vagrant@192.168.56.14
-
-con15:
-	@printf "$(OK_COLOR)==== Connecting to virtual machine ${name}... ====$(NO_COLOR)\n"
-	@ssh vagrant@192.168.56.15
-
-con16:
-	@printf "$(OK_COLOR)==== Connecting to virtual machine ${name}... ====$(NO_COLOR)\n"
-	@ssh vagrant@192.168.56.16
 
 down:
 	@printf "$(ERROR_COLOR)==== Stopping configuration ${name}... ====$(NO_COLOR)\n"
@@ -96,6 +79,10 @@ push:
 user:
 	@bash scripts/gituser.sh
 
+update:
+	@printf "$(YELLOW)Update all submodules for ${name}...$(NO_COLOR)\n"
+	@bash scripts/update.sh
+
 clean: down
 	@printf "$(ERROR_COLOR)==== Destroy configuration ${name}... ====$(NO_COLOR)\n"
 	@vagrant destroy
@@ -104,4 +91,4 @@ fclean:
 	@printf "$(ERROR_COLOR)==== Force destroy configurations ====$(NO_COLOR)\n"
 	@vagrant destroy --force
 
-.PHONY	: all help build down re ps clean fclean
+.PHONY	: all help build connect down env re path ps push user clean fclean
