@@ -32,8 +32,11 @@ sudo systemctl enable --now node_exporter
 sudo systemctl status node_exporter
 echo "Node exporter has been setup succefully!"
 
-## Install dns
+## Install dns and ldap
 
 apt update && apt install -y \
-
-## Install ldap
+    ldap-utils \
+    bind9utils \
+    bind9-doc \
+    bind9 \
+    slapd

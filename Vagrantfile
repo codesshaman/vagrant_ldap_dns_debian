@@ -16,8 +16,6 @@
 #       192.168.56.56     #
 ###########################
 
-OS = 'bento/ubuntu-22.04'
-
 # You can change ip here
 # (Range of ip addresses
 # Without last octet):
@@ -44,8 +42,7 @@ Vagrant.configure(2) do |config|
         ip: IP_ADDRESS
         debian.vm.hostname = "ldapserver"
         debian.vm.provision "shell",
-        privileged: true, path: "setup.sh",
-        args: [MASTER_NODES, WORKER_NODES]
+        privileged: true, path: "setup.sh"
         debian.vm.provider "virtualbox" do |v|
             v.name = "ldap_dns_server"
             v.memory = MEMORY_COUNT
